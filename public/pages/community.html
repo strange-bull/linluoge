@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../util/fonts-awesome-4.7.0/css/font-awesome.css"/>
+		<link rel="stylesheet" type="text/css" href="../util/jq-scroll/css/jquery.mCustomScrollbar.css"/>
+		<script type="text/javascript" src="../util/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="../util/jq-scroll/js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			a{
+				text-decoration: none;
+				color: black;
+			}
+			
+		    html,body{
+				width: 100%;
+				background-color: #EEEEEE;
+			}
+			
+			input{
+				outline: none;
+			}
+			
+			.forum-content{
+				width: 100%;
+			}
+			
+			.head{
+				width: 1400px;
+				height: 40px;
+				background: white;
+				margin: 0 auto;
+				border-bottom-right-radius: 3px;
+				border-bottom-left-radius: 3px;
+			}
+			
+			#logo{
+				line-height: 40px;
+				margin-left: 20px;
+				font-size: 12px;
+				color: #555555;
+			}
+			
+			.recommend-box{
+				width: 100%;
+				height: 300px;
+				margin-top: 20px;
+				
+			}
+			
+			.recommend-box>div{
+				width: 1200px;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			
+			.recommend-box>div>.user{
+				width: 500px;
+				height: 300px;
+				background-color: white;
+				float: left;
+				position: relative;
+			}
+			
+			.recommend-box>div>.user>.user-box{
+				width: 250px;
+				height: 250px;
+				top: 30px;
+				left: 20px;
+				/* background-color: #FAEBD7; */
+				background-color: white;
+				position: absolute;
+				box-shadow: 0 0 15px rgba(125,125,125,0.3);
+				transition: top 0.5s;
+			}
+			
+			.recommend-box>div>.user>.noice-box{
+				width: 100%;
+				height: 100%;
+				box-sizing: border-box;
+				padding: 20px;
+				position: absolute;
+				top: 300px;
+				background-color: white;
+				transition: top 0.5s;
+			}
+			
+			.noice-box .close{
+				text-align: right;
+				font-size: 18px;
+			}
+			
+			.noice-box .close:hover{
+				color: #5F9EA0;
+			}
+			
+			.noice-box .close:after{
+				content: '';
+				display: block;
+				clear: both;
+			}
+			
+			.noice-box .notice-node{
+				width: 50%;
+				overflow: hidden;
+				float: left;
+				cursor: pointer;
+				margin-bottom: 15px;
+			}
+			
+			.noice-box .notice-node>.head{
+				width: 50px;
+				height: 50px;
+				border-radius: 25px;
+				overflow: hidden;
+				float: left;
+			}
+			
+			.noice-box .notice-node>.msg{
+				float: left;
+				margin-left: 5px;
+			}
+			
+			.noice-box .notice-node>.msg>.level{
+				margin-top: 3px;
+				font-size: 13px;
+				margin-bottom: 5px;
+			}
+			
+			.noice-box .notice-node>.msg>.name{
+				font-size: 13px;
+			}
+			
+			.noice-box .notice-node>.head>img{
+				width: 100%;
+				height: 100%;
+			}
+			
+			.recommend-box>div>.user>.user-box>.user-msg{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 50px;
+				background-color: white;
+			}
+			
+			.user-box>.user-msg>.head{
+				width: 66px;
+				height: 66px;
+				border-radius: 43px;
+				background-color: pink;
+				border: 8px solid white;
+				float: left;
+				margin-left: 10px;
+				overflow: hidden;
+			}
+			
+			.user-box>.user-msg>.head>img{
+				width: 100%;
+				height: 100%;
+			}
+			
+			.user-box>.user-msg>.info{
+				float: left;
+				width: 140px;
+				height: 80px;
+				/* background-color: cyan; */
+				margin-left: 5px;
+			}
+			.user-box>.user-msg>.info>.name{
+				margin-top: 7px;
+			}
+			
+			.user-box>.user-msg>.info>.level{
+				width: 100%;
+				height: 20px;
+				margin-bottom: 5px;
+			}
+			
+			.user-box>.user-msg>.info>.level>.level-num{
+				font-size: 10px;
+				font-weight: bold;
+			}
+			
+			.user-box>.user-msg>.info>.level>.experience{
+				float: right;
+				width: 100px;
+				height: 7px;
+				margin-top: 6px;
+				border-radius: 5px;
+				overflow: hidden;
+				background-color: white;
+				border: 1px solid orange;
+			}
+			
+			.user-box>.user-msg>.info>.level>.experience>.experience-len{
+				width: 50%;
+				height: 7px;
+				background-color: orange;
+			}
+			
+			.user-box>.user-msg>.info>.fans{
+				
+			}
+			
+			.user-box>.user-opreation{
+				position: absolute;
+				left: 0;
+				top: 100px;
+				width: 100%;
+			}
+			
+			.user-opreation div{
+				width: 140px;
+				height: 35px;
+				line-height: 35px;
+				text-align: center;
+				background-color: #FAEBD7;
+				margin-left: 10px;
+				cursor: pointer;
+				border-radius: 3px;
+			}
+			
+			.user-opreation div:hover{
+				background-color: cadetblue;
+			}
+			
+			.user-opreation>div{
+				margin-top: 6px;
+			}
+			
+			.recommend-box>div>.recommend{
+				width: 680px;
+				height: 300px;
+				background-color: #ffe;
+				float: right;
+				position: relative;
+			}
+			
+			.recommend>img{
+				width: 100%;
+				height: 100%;
+			}
+			
+			.recommend>.recommend-choice{
+				position: absolute;
+				overflow: hidden;
+				bottom: 15px;
+				right: 15px;
+			}
+			
+			.recommend>.recommend-choice>li{
+				width: 80px;
+				height: 45px;
+				padding: 2px;
+				border: 1px solid #5F9EA0;
+				float: left;
+				margin-right: 7px;
+			}
+			
+			.recommend>.recommend-choice>li>img{
+				width: 100%;
+				height: 100%;
+			}
+			
+			.recommend>.recommend-choice>.show{
+				border-color: palevioletred;
+			}
+			
+			.recommend>.recommend-choice>li:hover{
+				border-color: palevioletred;
+			}
+			
+			.portrait-box{
+				width: 100%;
+				margin-top: 20px;
+			}
+			
+			.portrait-screen{
+				width: 1400px;
+				height: 50px;
+				margin: 0 auto;
+				background-color: white;
+			}
+			
+			.portrait-screen>ul>li{
+				width: 100px;
+				height: 50px;
+				text-align: center;
+				line-height: 50px;
+				float: left;
+				margin-right: 10px;
+				background-color: white;
+			}
+			
+			.portrait{
+				width: 1400px;
+				margin: 0 auto;
+				margin-top: 5px;
+				display: flex;
+				justify-content: space-between;
+			}
+			
+			.portrait>.col{
+				width: 19.5%;
+				height: 1000px;
+				/* background-color: #ffe; */
+			}
+			
+			.portrait-node{
+				width: 100%;
+				background-color: white;
+				margin-bottom: 15px;
+			}
+			
+			.portrait-node:hover{
+				box-shadow: 0 0 15px rgba(80,80,80,0.4);
+			}
+			
+			.portrait-node>.portrait-img{
+				width: 100%;
+			}
+			
+			.portrait-node>.portrait-img>img{
+				width: 100%;
+			}
+			
+			.portrait-node>.portrait-admin{
+				width: 100%;
+				box-sizing: border-box;
+				padding: 10px;
+				overflow: hidden;
+			}
+			
+			.portrait-node>.portrait-admin>.portrait-admin-msg{
+				width: 80%;
+				background-color: write;
+				float: left;
+				height: 50px;
+			}
+			
+			.portrait-node>.portrait-admin>.portrait-admin-msg>.portrait-admin-head{
+				width: 50px;
+				height: 50px;
+				border-radius: 25px;
+				overflow: hidden;
+				float: left;
+			}
+			
+			.portrait-admin-head>img{
+				width: 100%;
+				height: 100%;
+			}
+			
+			.portrait-node>.portrait-admin>.portrait-admin-msg>.portrait-admin-info{
+				float: left;
+				margin-left: 10px;
+			}
+			
+			.portrait-admin-info>.portrait-admin-name{
+				margin-top: 2px;
+				font-size: 12px;
+			}
+			.portrait-admin-info>.portrait-admin-title{
+				margin-top: 7px;
+			}
+			
+			.portrait-node>.portrait-admin>.portrait-good{
+				width: 19.5%;
+				background-color: write;
+				float: right;
+				height: 50px;
+				text-align: center;
+			}
+			
+			.portrait-good>p:nth-of-type(1){
+				margin-top: 5px;
+			}
+			
+			/* 发布作品 */
+			.share-works{
+				position: absolute;
+				top: -650px;
+				left: calc(50% - 325px);
+				width: 650px;
+				background-color: white;
+				box-sizing: border-box;
+				padding: 20px 30px;
+				transition: top 0.7s;
+			}
+			.share-works>div{
+				margin-bottom: 20px;
+			}
+			
+			.share-works>.bt-close{
+				float: right;
+				font-size: 20px;
+				margin-bottom: 10px;
+			}
+			
+			.share-works>.tag>.key-box{
+				margin: 10px 0 0 70px
+			}
+			
+			.share-works>p{
+				clear: both;
+				font-size: 20px;
+				margin-bottom: 20px;
+			}
+			
+			.share-works>.images>.images-box{
+				margin-top: 15px;
+				width: 100%;
+				height: 200px;
+				border: 1px solid #808080;
+				box-sizing: border-box;
+				padding: 20px;
+			}
+			
+			.share-works>.images>.images-box>.bt-add{
+				width: 20%;
+				height: 160px;
+				border: 1px dashed #808080 ;
+				font-size: 30px;
+				line-height: 160px;
+				text-align: center;
+				font-weight: 100;
+			}
+			
+			.share-works>div>span{
+				display: inline-block;
+				width: 55px;
+				text-align-last: justify;
+				vertical-align: center;
+				margin-right: 10px;
+			}
+			
+			.share-works>div>input{
+				vertical-align: center;
+				box-sizing: border-box;
+				padding: 2px 0 0 4px;
+				height: 30px;
+				width: 300px;
+			}
+			
+			.share-works>.bt-release{
+				margin-top: 10px;
+				width: 120px;
+				height: 40px;
+				margin: 0 auto;
+				text-align-last: justify;
+				line-height: 40px;
+				box-sizing: border-box;
+				padding: 0 35px;
+				background-color: #FAEBD7;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="forum-content">
+			<div class="head">
+				<div id="logo"> 返回首页< </div>
+			</div>	
+			<!-- 用户登录和推荐 -->
+			<div class="recommend-box">
+				<div class="">
+					<div class="user">
+						<div class="user-box">
+							<div class="user-msg">
+								<div class="head"><img src="../image/head1.jpg" ></div>
+								<div class="info">
+									<p class="name">狮子王·雪莱</p>
+									<div class="level">
+										<span class="level-num">Lv.12</span>
+										<div class="experience">
+											<div class="experience-len"></div>
+										</div>
+									</div>
+									<div class="fans">
+										<span>粉丝数 </span><span>155w</span>
+									</div>
+								</div>
+							</div>
+							<div class="user-opreation">
+								<a href="personalCenter.html"><div class="my-works">我的作品</div></a>
+								<div class="my-notice">我的关注</div>
+								<div class="issue">分享作品</div>
+							</div>
+						</div>
+						<div class="noice-box">
+							<div class="close"><i class="fa fa-times" aria-hidden="true"></i></div>
+							<div class="notice-node">
+								<div class="head"><img src="../image/yayoi8.jpg" ></div>
+								<div class="msg">
+									<p class="level">Lv.1</p>
+									<p class="name">阿尔托莉雅·潘德拉贡</p>
+								</div>
+							</div>
+							<div class="notice-node">
+								<div class="head"><img src="../image/yayoi8.jpg" ></div>
+								<div class="msg">
+									<p class="level">Lv.1</p>
+									<p class="name">阿尔托莉雅·潘德拉贡</p>
+								</div>
+							</div>
+							<div class="notice-node">
+								<div class="head"><img src="../image/yayoi8.jpg" ></div>
+								<div class="msg">
+									<p class="level">Lv.1</p>
+									<p class="name">阿尔托莉雅·潘德拉贡</p>
+								</div>
+							</div>
+							<div class="notice-node">
+								<div class="head"><img src="../image/yayoi8.jpg" ></div>
+								<div class="msg">
+									<p class="level">Lv.1</p>
+									<p class="name">阿尔托莉雅·潘德拉贡</p>
+								</div>
+							</div>
+							<div class="notice-node">
+								<div class="head"><img src="../image/yayoi8.jpg" ></div>
+								<div class="msg">
+									<p class="level">Lv.1</p>
+									<p class="name">阿尔托莉雅·潘德拉贡</p>
+								</div>
+							</div>
+							<div class="notice-node">
+								<div class="head"><img src="../image/yayoi8.jpg" ></div>
+								<div class="msg">
+									<p class="level">Lv.1</p>
+									<p class="name">阿尔托莉雅·潘德拉贡</p>
+								</div>
+							</div>
+							<div class="notice-node">
+								<div class="head"><img src="../image/yayoi8.jpg" ></div>
+								<div class="msg">
+									<p class="level">Lv.1</p>
+									<p class="name">阿尔托莉雅·潘德拉贡</p>
+								</div>
+							</div>
+							<div class="notice-node">
+								<div class="head"><img src="../image/yayoi8.jpg" ></div>
+								<div class="msg">
+									<p class="level">Lv.1</p>
+									<p class="name">阿尔托莉雅·潘德拉贡</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="recommend">
+						<img src="../image/17.jpg" alt="">
+						<ul class="recommend-choice">
+							<li class="show"><img src="../image/17.jpg" ></li>
+							<li><img src="../image/21.jpg" ></li>
+							<li><img src="../image/28.jpg" ></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- end -->
+			
+			<!-- 分享作品 -->
+			<div class="share-works">
+				<div class="bt-close"><i class="fa fa-times" aria-hidden="true"></i></div>
+				<p> 作品分享 </p>
+				<div class="title">
+					<span>标题</span>
+					<input type="text" class=""/>
+				</div>
+				<div class="tag">
+					<span>关键字</span>
+					<input type="text" class=""/>
+					<div class="key-box"><span>二次元<span></span> <i class="fa fa-times" aria-hidden="true"></i></span></div>
+				</div>
+				<div class="images">
+					<span>相片</span>
+					<div class="images-box">
+						<div class="bt-add"><i class="fa fa-plus" aria-hidden="true"></i></div>
+					</div>
+				</div>
+				<div class="bt-release">发布</div>
+			</div>
+			
+			<!-- 写真集展示 -->
+			<div class="portrait-box">
+				<div class="portrait-screen">
+					<ul>
+						<li>按热度</li>
+						<li>按时间</li>
+						<li>按类别 <span><i class="fa fa-caret-down" aria-hidden="true"></i></span>
+							<!-- <ul>
+								<li>男装</li>
+								<li>女装</li>
+							</ul> -->
+						</li>
+					</ul>
+				</div>
+				<div class="portrait">
+					<div class="col">
+						<a href="portraitDetails.html">
+							<div class="portrait-node">
+								<div class="portrait-img"><img src="../image/1.jfif" ></div>
+								<div class="portrait-admin">
+									<div class="portrait-admin-msg">
+										<div class="portrait-admin-head"><img src="../image/head1.jpg" ></div>
+										<div class="portrait-admin-info">
+											<div class="portrait-admin-info">
+												<h1 class="portrait-admin-name">
+													狮子王·雪莱
+												</h1>
+												<p class="portrait-admin-title">
+													妖刀姬精选图册
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="portrait-good">
+										<p> 12 </p>
+										<p><span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span></p>
+									</div>
+								</div>
+							</div>
+						</a>
+						<a href="portraitDetails.html">
+							<div class="portrait-node">
+								<div class="portrait-img"><img src="../image/1.jfif" ></div>
+								<div class="portrait-admin">
+									<div class="portrait-admin-msg">
+										<div class="portrait-admin-head"><img src="../image/head1.jpg" ></div>
+										<div class="portrait-admin-info">
+											<div class="portrait-admin-info">
+												<h1 class="portrait-admin-name">
+													狮子王·雪莱
+												</h1>
+												<p class="portrait-admin-title">
+													妖刀姬精选图册
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="portrait-good">
+										<p> 12 </p>
+										<p><span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span></p>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="col">
+						<div class="portrait-node">
+							<div class="portrait-img"><img src="../image/2.jfif" ></div>
+							<div class="portrait-admin">
+								<div class="portrait-admin-msg">
+									<div class="portrait-admin-head"><img src="../image/head1.jpg" ></div>
+									<div class="portrait-admin-info">
+										<h1 class="portrait-admin-name">
+											狮子王·雪莱
+										</h1>
+										<p class="portrait-admin-title">
+											妖刀姬精选图册
+										</p>
+									</div>
+								</div>
+								<div class="portrait-good">
+									<p> 12 </p>
+									<p><span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="portrait-node">
+							<div class="portrait-img"><img src="../image/3.jfif" ></div>
+							<div class="portrait-admin">
+								<div class="portrait-admin-msg">
+									<div class="portrait-admin-head"><img src="../image/head1.jpg" ></div>
+									<div class="portrait-admin-info">
+										<div class="portrait-admin-info">
+											<h1 class="portrait-admin-name">
+												狮子王·雪莱
+											</h1>
+											<p class="portrait-admin-title">
+												妖刀姬精选图册
+											</p>
+										</div>
+									</div>
+								</div>
+								<div class="portrait-good">
+									<p> 12 </p>
+									<p><span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="portrait-node">
+							<div class="portrait-img"><img src="../image/4.jfif" ></div>
+							<div class="portrait-admin">
+								<div class="portrait-admin-msg">
+									<div class="portrait-admin-head"><img src="../image/head1.jpg" ></div>
+									<div class="portrait-admin-info">
+										<div class="portrait-admin-info">
+											<h1 class="portrait-admin-name">
+												狮子王·雪莱
+											</h1>
+											<p class="portrait-admin-title">
+												妖刀姬精选图册
+											</p>
+										</div>
+									</div>
+								</div>
+								<div class="portrait-good">
+									<p> 12 </p>
+									<p><span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="portrait-node">
+							<div class="portrait-img"><img src="../image/5.jfif" ></div>
+							<div class="portrait-admin">
+								<div class="portrait-admin-msg">
+									<div class="portrait-admin-head"><img src="../image/head1.jpg" ></div>
+									<div class="portrait-admin-info">
+										<div class="portrait-admin-info">
+											<h1 class="portrait-admin-name">
+												狮子王·雪莱
+											</h1>
+											<p class="portrait-admin-title">
+												妖刀姬精选图册
+											</p>
+										</div>
+									</div>
+								</div>
+								<div class="portrait-good">
+									<p> 12 </p>
+									<p><span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end -->
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(window).on('load',function(){
+			$('.user>.noice-box').mCustomScrollbar();
+		});
+		/* 用户节点 */
+		var user_box = $('.user>.user-box');
+		
+		/* 我的作品模块节点 */
+		var my_works_bt = $('.user-opreation>.myworks'); // 我的作品按钮
+		
+		/* 我的关注模块节点 */
+		var notice_box = $('.user>.noice-box'); // 我的关注窗口
+		var my_notice_bt = $('.user-opreation>.my-notice'); // 我的关注按钮
+		var notice_close_bt = $('.noice-box>.close'); // 我的关注关闭
+		
+		/* 分享作品模块节点 */
+		var share_works_box = $('.share-works'); // 分享作品窗口
+		var issue_bt = $('.user-opreation>.issue'); // 分享作品按钮
+		var issue_close_bt = $('.share-works>.bt-close'); // 分享作品框关闭
+		
+		/* 改变滚动条样式 */
+		// -关注窗口
+		notice_box.mCustomScrollbar({
+			autoHideScrollbar: true ,
+		});
+		
+		/* 添加点击事件 */
+		// -分享作品
+		// --打开分享作品窗口
+		issue_bt.click(function(){
+			share_works_box.css({
+				"top" : "130px",
+			})
+		});
+		// --关闭分享作品窗口
+		issue_close_bt.click(function(){
+			share_works_box.css({
+				"top" : "-650px",
+			})
+		});
+		
+		
+		// -我的关注
+		// --打开分享作品窗口
+		my_notice_bt.click(function(){
+			notice_box.css({
+				"top" : "0",
+			});
+			user_box.css({
+				"top" : "-260px",
+			});
+		});
+		// --关闭分享作品窗口
+		notice_close_bt.click(function(){
+			notice_box.css({
+				"top" : "300px",
+			});
+			user_box.css({
+				"top" : "30px",
+			})
+		});
+	</script>
+</html>

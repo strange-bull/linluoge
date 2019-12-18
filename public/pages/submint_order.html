@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>确认订单</title>
+		<link rel="stylesheet/less" type="text/css" href="../less/submint-order.less">
+		<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<section class="subor-top">
+			<div class="subor-top-wap">
+				<!-- 选择地址 -->
+				<div class="subor-top-address">
+					<span class="subor-top-title">请选择地址</span>
+					<div id="ad-address">
+						添加收货地址
+					</div>
+					<div class="subor-top-msg">
+						<h5>某某某</h5>
+						<p>12345678910</p>
+						<p>四川省成都市武侯区XXX号</p>
+						<div class="top-msg-do">
+							<ul>
+								<li class="msg-do">设为默认</li>
+								<li>|</li>
+								<li class="msg-do">编辑</li>
+							</ul>
+							  
+						</div>
+						<div class="sanjiao">	
+						</div>
+						<i class="fa fa-check" aria-hidden="true"></i>
+					</div>
+				</div>
+				<!-- 确认产品信息 -->
+				<div class="subor-top-check">
+					<span class="subor-top-title">确认产品信息</span>
+					<div class="subor-check-table">
+						<div class="check-table-head">
+							<ul>
+								<li>产品信息</li>
+								<li>规格</li>
+								<li>数量</li>
+								<li>单价</li>
+							</ul>
+						</div>
+						<div class="check-table-content">
+							<ul>
+								<li>
+									<a href="goods-details.html"><img src="https://static.hm.com.cn/media/catalog/product/cache/82acd5018dc36bd4507bcad5faafe971/c/a/ca0fe935fac852a5b9d737fb239ea88c7d2176a9.jpg" alt=""></a>
+									<div class="check-table-desc">
+										<span>绫罗阁·彩云系列服装</span>
+										<p>衣服</p>
+									</div>
+								</li>
+								<li>
+									<p>规格：绫罗阁·彩云系列服装</p>
+									<p>绿色，170，m号</p>
+								</li>
+								<li>x1</li>
+								<li>¥ 14,932.08</li>
+							</ul>
+						</div>
+						<div class="check-table-foot">
+							共1件，总价：¥ 14,932.08 运费：¥ 15.40
+						</div>
+					</div>
+				</div>
+				<!-- 备注留言 -->
+				<div class="subor-top-add">
+					<span class="subor-top-title">备注留言</span>
+					<textarea  placeholder="请输入您的备注信息"></textarea>
+				</div>
+				<!-- 代金券 -->
+				<div class="subor-top-sale">
+					<span class="subor-top-title">请使用代金券</span>
+					<div class="sale-yh">
+
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="subor-bottom">
+			<div class="subor-bottom-msg">
+				<ul>
+					<li>
+						<span class="msg-name">总价:</span> <span>¥ 14,932.08</span>
+					</li>
+					<li>
+						<span class="msg-name transfee">运费:</span> <span>¥ 15.40</span>
+					</li>
+					<li>
+						<span class="msg-name totalfee">实际支付:</span> <span class="totalfe">¥ 14,947.48</span>
+					</li>
+				</ul>
+				<div class="msg-info">
+					<ul>
+						<li>12345678910</li>
+						<li>收件人：某某某</li>
+						<li>配送地址：四川省成都市武侯区某某某</li>
+					</ul>
+				</div>
+			</div>
+			<div id="subor-bottom-butt">
+				确认并支付
+			</div>
+		</section>
+		<section id="pay-page">
+			<div class="pay-kuang">
+				<div class="choose-pay">
+					<div class="choose-pay-butt" id="wx-pay-butt">微信支付</div>
+					<div class="choose-pay-butt" id="zhi-pay-butt">支付宝支付</div>
+					<div id="close-page">
+						<i class="fa fa-times" aria-hidden="true"></i>
+					</div>
+				</div>
+				<div id="we-chat-pay">
+					<ul>
+						<li><img src="../images/wx-pay.png" alt=""></li>
+						<li><img src="../images/pic-wx-scan.png" alt=""></li>
+					</ul>
+				</div>
+				<div id="zhi-pay">
+					<ul>
+						<li><img src="../images/zhi-pay.png" alt=""></li>
+						<li><img src="../images/pic-ali-scan.png" alt=""></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<section id="add-address-page">
+			<form action="" method="">
+			<div class="area">
+				<ul>
+					<li><span>收货人信息</span></li>
+					
+					<li>
+						<span>收货人</span>
+						<span>联系电话</span>
+					</li>
+					
+					<li>
+						<input type="text" name=""  value="" class="name" placeholder="请输入姓名"/>
+						<input type="tel" name="" value="" class="user-tel"  placeholder="请输入联系方式" />
+					</li>
+					
+					<li>
+						<span>收货地址</span>
+					</li>
+					
+					<li>
+						<span>省</span>
+						<span>市</span>
+						<span>区</span>
+					</li>
+					
+					<li>
+						<select>
+							<option value ="" >请选择省</option>
+							<option value ="" >北京</option>
+							<option value ="" >上海</option>
+							<option value ="" >广东</option>
+							<option value ="" >深圳</option>
+						</select>
+						<select>
+							<option value ="" >请选择市</option>
+							<option value ="" >佛山市</option>
+							<option value ="" >上海城区</option>
+							<option value ="" >北京城区</option>
+							
+						</select>
+						<select>
+							<option value ="" >请选择区</option>
+							<option value ="" >三水区</option>
+							<option value ="" >浦东新区</option>
+							<option value ="" >朝阳区</option>
+							
+						</select>
+					</li>
+					
+					<li>
+						<span>详细地址 (具体门牌号)</span>
+					</li>
+					
+					<li>
+						<input type="text" name="" value="" class="address" placeholder="请输入详细地址" />
+					</li>
+					
+					<li>
+						<div class="select">
+							<input type="text" class="click">
+							<div class="select-back">
+								<i class="fa fa-check" aria-hidden="true"></i>
+							</div>
+						</div>
+						<div class="btn">
+							<button type="button" id="add-address-quxiao">取消</button>
+							<button type="button" id="add-address-queding">确定</button>
+						</div>
+						
+					</li>
+				</ul>
+			</div>
+		</form>
+		</section>
+	</body>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script src="../js/submit_order.js"></script>
+</html>

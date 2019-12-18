@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../uitl/fonts-awesome-4.7.0/css/font-awesome.css"/>
+		<link rel="stylesheet" type="text/css" href="../uitl/jq-scroll/css/jquery.mCustomScrollbar.css"/>
+		<script type="text/javascript" src="../uitl/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="../uitl/jq-scroll/js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			html,body{
+				width: 100%;
+				height: 100%;
+				background-color: #eee;
+			}
+			
+			.content{
+				width: 1300px;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			
+			.content-left{
+				width: 80%;
+				float: left;
+				/* background-color: pink; */
+			}
+			
+			.portrait-show-box{
+				width: 100%;
+			}
+			
+			.portrait-show-box>.show-main{
+				position: relative;
+				width: 100%;
+				height: 613px;
+				background-color: white;
+				box-sizing: border-box;
+				padding: 10px;
+				overflow: hidden;
+			}
+			
+			.portrait-show-box>.show-main:hover>.bt-pre{
+				left: 30px;
+			}
+			
+			.portrait-show-box>.show-main:hover>.bt-next{
+				right: 30px;
+			}
+			
+			.portrait-show-box>.show-main>.bt-pre{
+				position: absolute;
+				top: calc(50% - 30px);
+				left: -60px;
+				width: 60px;
+				height: 60px;
+				background-color: rgba(0,0,0,0.3);
+				border-radius: 30px;
+				line-height: 60px;
+				text-align: center;
+				font-size: 30px;
+				color: white;
+				transition: left 0.5s;
+			}
+			
+			.portrait-show-box>.show-main>.bt-next{
+				position: absolute;
+				top: calc(50% - 30px);
+				right: -60px;
+				width: 60px;
+				height: 60px;
+				background-color: rgba(0,0,0,0.3);
+				border-radius: 30px;
+				line-height: 60px;
+				text-align: center;
+				font-size: 30px;
+				color: white;
+				transition: right 0.5s;
+			}
+			
+			.portrait-show-box>.show-main>.bt-pre:hover{
+				background-color: palevioletred;
+			}
+			
+			.portrait-show-box>.show-main>.bt-next:hover{
+				background-color: palevioletred;
+			}
+			
+			.portrait-show-box>.show-main>img{
+				width: 100%;
+				height: 100%;
+			}
+			
+			.portrait-show-box>.show-more{
+				width: 100%;
+				height: 230px;
+				margin-top: 10px;
+				background-color: white;
+				box-sizing: border-box;
+				padding: 10px;
+			}
+			
+			.portrait-show-box>.show-more>ul{
+				width: 100%;
+				height: 165px;
+				margin-top: 5px;
+				text-align: center;
+				display: flex;
+				justify-content: center;
+			}
+			
+			.portrait-show-box>.show-more>ul>li{
+				width: 150px;
+				height: 165px;
+				box-sizing: border-box;
+				padding: 2px;
+				border: 1px solid palevioletred;
+				display: flex;
+				float: left;
+				align-items: center;
+				margin: 0 5px;
+			}
+			
+			.portrait-show-box>.show-more>ul>li>img{
+				width: 100%;
+				max-height: 100%;
+			}
+			
+			.portrait-show-box>.show-more>.page{
+				margin-top: 15px;
+				text-align: center;
+			}
+			
+		    .recommend{
+				width: 100%;
+				margin-top: 10px;
+				background-color: white;
+				box-sizing: border-box;
+				padding: 10px;
+			}	
+			
+			.recommend>.change>span{
+				font-size: 20px;
+				margin-left: 15px;
+			}
+			
+			.recommend>.recommend-box{
+				margin-top: 20px;
+				width: 100%;
+				display: flex;
+				justify-content: center;
+			}
+			
+			.recommend>.recommend-box>.recommend-node{
+				width: 22%;
+				margin: 10px;
+				box-sizing: border-box;
+				border: 1px solid #EEEEEE;
+				overflow: hidden;
+			}
+			
+			.recommend-node>.recommend-img{
+				width: 100%;
+				height: 250px;
+				overflow: hidden;
+			}
+			
+			.recommend-node>.recommend-img>img{
+				max-width: 100%;
+			}
+			
+			.recommend-node>.recommend-info{
+				width: 100%;
+				float: left;
+				margin: 10px 0 10px 10px;
+			}
+			
+			.recommend-node>.recommend-info>.user-head{
+				width: 40px;
+				height: 40px;
+				border-radius: 25px;
+				overflow: hidden;
+				float: left;
+			}
+			
+			.recommend-node>.recommend-info>.user-head>img{
+				width: 100%;
+				height: 100%;
+			}
+			
+			.recommend-node>.recommend-info>.user-msg{
+				float: left;
+			    margin-left: 10px;
+			}
+			
+			.recommend-node>.recommend-info>.user-msg>.user-name{
+				font-size: 11px;
+				font-weight: bold;
+				margin: 3px 0 4px;
+				letter-spacing: 1px;
+			}
+			
+			.recommend-node>.recommend-info>.user-msg>.title{
+				font-size: 13px;
+				margin-top: 6px;
+			}
+			
+			.recommend-node>.node-right{
+				width: 19.5%;
+				float: right;
+				margin-right: 10px;
+				text-align: center;
+				line-height: 23px;
+				margin-bottom: 10px;
+			}
+			
+			.recommend>.change>span:nth-of-type(2){
+				float: right;
+				font-size: 15px;
+				line-height: 20px;
+				margin-right: 15px;
+			}
+			
+			.content-right{
+				width: 19.5%;
+				float: right;
+				/* box-sizing: border-box;
+				padding: 10px; */
+			}
+			
+			.content-right>.author-msg{
+				width: 100%;
+				height: 270px;
+				background-color: white;
+			}
+			
+			.author-msg>.author-info{
+				width: 100%;
+				height: 50px;
+				background-color: white;
+			}
+			
+			.author-info>.author-head{
+				width: 80px;
+				height: 80px;
+				border: 10px solid white;
+				float: left;
+				margin-left: 10px;
+				border-radius: 50px;
+				overflow: hidden;
+			}
+			
+			.author-info>.author-head>img{
+				width: 100%;
+				height: 100%;
+			}
+			
+			.author-info>.author-other{
+				float: left;
+			}
+			
+			.author-info>.author-other>.author-name{
+				margin: 20px 0 15px;
+			}
+			
+			.author-info>.author-other>.author-level{
+				font-size: 13px;
+			}
+			
+			.author-msg>.author-data{
+				margin-top: 65px;
+				display: flex;
+				justify-content: center;
+			}
+			
+			.author-msg>.author-data>div{
+				margin: 0 10px;
+				width: 80px;
+				text-align: center;
+			}
+			.author-msg>.author-data>div>p:first-child{
+				margin-bottom: 4px;
+			}
+			
+			.author-msg>.bt-notice{
+				width: 80%;
+				height: 40px;
+				margin: 35px 0 0 22px;
+				text-align-last: justify;
+				background-color: palevioletred;
+				line-height: 40px;
+				font-size: 20px;
+				color: white;
+				box-sizing: border-box;
+				padding: 0 65px;
+				cursor: pointer;
+			}
+			
+			.author-msg>.bt-notice:hover{
+				background-color: #9c3d5c;
+			}
+			
+			.content-right>.portrait-msg{
+				width: 100%;
+				margin-top: 10px;
+				background-color: white;
+				box-sizing: border-box;
+				padding: 15px 10px;
+			}
+			
+			.portrait-msg>.title{
+
+			}
+			
+			.portrait-msg>.tag{
+				margin: 17px 0 8px;
+			}
+			
+			.portrait-msg>.tag>div{
+				display: inline-block;
+				padding: 3px 6px;
+				background-color: palevioletred;
+				color: white;
+				font-size: 12px;
+				border-radius: 4px;
+			}
+			
+			.portrait-msg>.time{
+				font-size: 12px;
+				color: grey;
+			}
+			
+			.portrait-msg>.opretion{
+				margin-top: 15px;
+				width: 100%;
+			}
+			
+			.portrait-msg>.opretion>div{
+				display: inline-block;
+				text-align: center;
+				padding: 2px 8px;
+				background-color: white;
+				color: grey;
+				border-radius: 5px;
+				font-size: 14px;
+			}
+			
+			.send-msg{
+				margin-top: 10px;
+				width: 100%;
+				box-sizing: border-box;
+				padding: 10px;
+				background-color: white;
+				overflow: hidden;
+			}
+			
+			.send-msg>p{
+				margin-bottom: 5px;
+				color: gray;
+			}
+			
+			.send-msg>textarea{
+				border: none;
+				outline: none;
+				resize: none;
+				overflow: hidden;
+				width: 100%;
+				height: 80px;
+				color: grey;
+				background-color: white;
+			}
+			
+			.send-msg>.bt-send{
+				width: 80px;
+				height: 25px;
+				background-color: palevioletred;
+				color: white;
+				box-sizing: border-box;
+				text-align-last: justify;
+				line-height: 25px;
+				padding:  0 20px;
+				float: right;
+				cursor: pointer;
+			}
+			
+			.send-msg>.bt-send:hover{
+				background-color: #9c3d5c;
+			}
+			
+			.content-right>.chat-box{
+				margin-top: 10px;
+				width: 100%;
+				height: 290px;
+				background-color: white;
+				box-sizing: border-box;
+				padding: 10px;
+			}
+			
+			.chat-box .chat-node{
+				margin-bottom: 13px;
+			}
+			
+			.chat-box .chat-node>.chat-user{
+				overflow: hidden;
+				position: relative;
+			}
+			
+			.chat-box .chat-node>.chat-user:hover>.chat-info{
+				display: block;
+			}
+			
+			.chat-box .chat-node>.chat-user>.user-head{
+				width: 40px;
+				height: 40px;
+				border-radius: 20px;
+				overflow: hidden;
+				float: left;
+				margin-right: 10px;
+			}
+			
+			.chat-node>.chat-user>.user-head>img{
+				width: 100%;
+				height: 100%;
+			}
+			
+			.chat-node>.chat-user>.user-msg{
+				float: left;
+				font-size: 12px;
+			}
+			
+			.chat-node>.chat-user>.chat-content{
+				clear: both;
+				margin-left: 50px;
+				font-size: 12px;
+			}
+			
+			.chat-user>.chat-info{
+				position: absolute;
+				top: 0;
+				right: 10px;
+				font-size: 13px;
+				display: none;
+			}
+			
+			.chat-user>.chat-info>span{
+				margin-right: 3px;
+			}
+			
+			.content-right>.author-portrait{
+				margin-top: 10px;
+				width: 100%;
+				box-sizing: border-box;
+				padding: 20px 10px;
+				background-color: white;
+			}
+			
+			.author-portrait>p{
+				text-align: center;
+				font-size: 15px;
+				letter-spacing: 2px;
+				font-weight: bold;
+				margin-bottom: 15px;
+			}
+			
+			.author-portrait>ul>li{
+				margin: 0 auto 15px;
+				width: 90%;
+				height: 80px;
+			}
+			
+			.author-portrait>ul>li>img{
+				width: 100%;
+				height: 100%;
+			}
+			
+			.author-portrait>.bt-more{
+				width: 120px;
+				height: 30px;
+				background-color: palevioletred;
+				text-align: center;
+				line-height: 30px;
+				color: white;
+				margin: 0 auto;
+				cursor: pointer;
+			}
+			
+			.author-portrait>.bt-more:hover{
+				background-color: #9c3d5c;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content">
+			<div class="content-left">
+				<div class="portrait-show-box">
+					<div class="show-main">
+						<div class="bt-pre"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+						<div class="bt-next"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+						<img src="../image/npm1.jpg">
+					</div>
+					<div class="show-more">
+						<ul>
+							<li><img src="../image/23.jpg" ></li>
+							<li><img src="../image/midoli2.png" ></li>
+							<li><img src="../image/yayoi15.jpg" ></li>
+						</ul>
+						<div class="page"><span>1</span> / <span>3</span></div>
+					</div>
+				</div>
+				<div class="recommend">
+					<div class="change">
+						<span>相似推荐</span>
+						<span><i class="fa fa-retweet" aria-hidden="true"></i> 换一换</span>
+					</div>
+					<div class="recommend-box">
+						<div class="recommend-node">
+							<div class="recommend-img"><img src="../image/5.jfif" ></div>
+							<div class="recommend-info">
+								<div class="user-head"><img src="../image/yayoi8.jpg"></div>
+								<div class="user-msg">
+									<p class="user-name">五更琉璃</p>
+									<p class="title">五更琉璃精品合集</p>
+								</div>
+							</div>
+							<div class="node-right">
+								<!-- <p class="goods">156</p> -->
+								<p class="goods-icon"><span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span> 156</p>
+							</div>
+						</div>
+						<div class="recommend-node">
+							<div class="recommend-img"><img src="../image/5.jfif" ></div>
+							<div class="recommend-info">
+								<div class="user-head"><img src="../image/yayoi8.jpg"></div>
+								<div class="user-msg">
+									<p class="user-name">五更琉璃</p>
+									<p class="title">五更琉璃精品合集</p>
+								</div>
+							</div>
+							<div class="node-right">
+								<!-- <p class="goods"></p> -->
+								<p class="goods-icon"><span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span> 156</p>
+							</div>
+						</div>
+						<div class="recommend-node">
+							<div class="recommend-img"><img src="../image/5.jfif" ></div>
+							<div class="recommend-info">
+								<div class="user-head"><img src="../image/yayoi8.jpg"></div>
+								<div class="user-msg">
+									<p class="user-name">五更琉璃</p>
+									<p class="title">五更琉璃精品合集</p>
+								</div>
+							</div>
+							<div class="node-right">
+								<!-- <p class="goods">156</p> -->
+								<p class="goods-icon"><span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span> 156</p>
+							</div>
+						</div>
+						<div class="recommend-node">
+							<div class="recommend-img"><img src="../image/5.jfif" ></div>
+							<div class="recommend-info">
+								<div class="user-head"><img src="../image/yayoi8.jpg"></div>
+								<div class="user-msg">
+									<p class="user-name">五更琉璃</p>
+									<p class="title">五更琉璃精品合集</p>
+								</div>
+							</div>
+							<div class="node-right">
+								<!-- <p class="goods">156</p> -->
+								<p class="goods-icon"><span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span> 156</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="content-right">
+				<div class="author-msg">
+					<div class="author-info">
+						<div class="author-head"><img src="../image/yayoi8.jpg" ></div>
+						<div class="author-other">
+							<p class="author-name">狮子王·雪莱</p>
+							<p class="author-level">等级: Lv.14</p>
+						</div>
+					</div>
+					<div class="author-data">
+						<div class="fans">
+							<p>320w</p>
+							<p>粉丝数</p>
+						</div>
+						<div class="works">
+							<p>255</p>
+							<p>作品数</p>
+						</div>
+						<div class="point">
+							<p>1.5w</p>
+							<p>积分</p>
+						</div>
+					</div>
+					<div class="bt-notice"> 关注 </div>
+				</div>
+				<div class="portrait-msg">
+					<p class="title"> 我的青春恋爱物语果然有问题雪之下雪乃精选合集 </p>
+					<div class="tag">
+						<div> 美图 </div>
+						<div> 春物 </div>
+						<div> 二次元 </div>
+					</div>
+					<div class="time">
+						<span> 发布于: </span>
+						<span>2019-12-18</span>
+					</div>
+					<div class="opretion">
+						<div><span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span> <span>3355</span></div>
+						<div>举报</div>
+						<div><i class="fa fa-reply" aria-hidden="true"></i></div>
+					</div>
+				</div>
+				<div class="send-msg">
+					<p> 发送评论 </p>
+					<textarea rows="" cols=""></textarea>
+					<div class="bt-send"> 发送 </div>
+				</div>
+				<div class="chat-box">
+					<div class="chat-node">
+						<div class="chat-user">
+							<div class="user-head"><img src="../image/yayoi8.jpg" ></div>
+							<div class="user-msg">
+								<p class="user-name">许尹恒</p>
+								<p class="send-time">2019-12-18 9:24</p>
+							</div>
+							<div class="chat-content">
+								这是一段对话
+							</div>
+							<div class="chat-info">
+								<span class="rechatnum"><i class="fa fa-commenting-o" aria-hidden="true"></i></span>
+								<span class="report"><i class="fa fa-exclamation" aria-hidden="true"></i></span>
+							</div>
+						</div>		
+					</div>
+					<div class="chat-node">
+						<div class="chat-user">
+							<div class="user-head"><img src="../image/yayoi8.jpg" ></div>
+							<div class="user-msg">
+								<p class="user-name">许尹恒</p>
+								<p class="send-time">2019-12-18 9:24</p>
+							</div>
+							<div class="chat-content">
+								这是一段对话
+							</div>
+							<div class="chat-info">
+								<span class="rechatnum"><i class="fa fa-commenting-o" aria-hidden="true"></i></span>
+								<span class="report"><i class="fa fa-exclamation" aria-hidden="true"></i></span>
+							</div>
+						</div>		
+					</div>
+					<div class="chat-node">
+						<div class="chat-user">
+							<div class="user-head"><img src="../image/yayoi8.jpg" ></div>
+							<div class="user-msg">
+								<p class="user-name">许尹恒</p>
+								<p class="send-time">2019-12-18 9:24</p>
+							</div>
+							<div class="chat-content">
+								这是一段对话
+							</div>
+							<div class="chat-info">
+								<span class="rechatnum"><i class="fa fa-commenting-o" aria-hidden="true"></i></span>
+								<span class="report"><i class="fa fa-exclamation" aria-hidden="true"></i></span>
+							</div>
+						</div>		
+					</div>
+					<div class="chat-node">
+						<div class="chat-user">
+							<div class="user-head"><img src="../image/yayoi8.jpg" ></div>
+							<div class="user-msg">
+								<p class="user-name">许尹恒</p>
+								<p class="send-time">2019-12-18 9:24</p>
+							</div>
+							<div class="chat-content">
+								这是一段对话
+							</div>
+							<div class="chat-info">
+								<span class="rechatnum"><i class="fa fa-commenting-o" aria-hidden="true"></i></span>
+								<span class="report"><i class="fa fa-exclamation" aria-hidden="true"></i></span>
+							</div>
+						</div>		
+					</div>
+					<div class="chat-node">
+						<div class="chat-user">
+							<div class="user-head"><img src="../image/yayoi8.jpg" ></div>
+							<div class="user-msg">
+								<p class="user-name">许尹恒</p>
+								<p class="send-time">2019-12-18 9:24</p>
+							</div>
+							<div class="chat-content">
+								这是一段对话
+							</div>
+							<div class="chat-info">
+								<span class="rechatnum"><i class="fa fa-commenting-o" aria-hidden="true"></i></span>
+								<span class="report"><i class="fa fa-exclamation" aria-hidden="true"></i></span>
+							</div>
+						</div>		
+					</div>
+					<div class="chat-node">
+						<div class="chat-user">
+							<div class="user-head"><img src="../image/yayoi8.jpg" ></div>
+							<div class="user-msg">
+								<p class="user-name">许尹恒</p>
+								<p class="send-time">2019-12-18 9:24</p>
+							</div>
+							<div class="chat-content">
+								这是一段对话
+							</div>
+							<div class="chat-info">
+								<span class="rechatnum"><i class="fa fa-commenting-o" aria-hidden="true"></i></span>
+								<span class="report"><i class="fa fa-exclamation" aria-hidden="true"></i></span>
+							</div>
+						</div>		
+					</div>
+					<div class="chat-node">
+						<div class="chat-user">
+							<div class="user-head"><img src="../image/yayoi8.jpg" ></div>
+							<div class="user-msg">
+								<p class="user-name">许尹恒</p>
+								<p class="send-time">2019-12-18 9:24</p>
+							</div>
+							<div class="chat-content">
+								这是一段对话
+							</div>
+							<div class="chat-info">
+								<span class="rechatnum"><i class="fa fa-commenting-o" aria-hidden="true"></i></span>
+								<span class="report"><i class="fa fa-exclamation" aria-hidden="true"></i></span>
+							</div>
+						</div>		
+					</div>
+					<div class="chat-node">
+						<div class="chat-user">
+							<div class="user-head"><img src="../image/yayoi8.jpg" ></div>
+							<div class="user-msg">
+								<p class="user-name">许尹恒</p>
+								<p class="send-time">2019-12-18 9:24</p>
+							</div>
+							<div class="chat-content">
+								这是一段对话
+							</div>
+							<div class="chat-info">
+								<span class="rechatnum"><i class="fa fa-commenting-o" aria-hidden="true"></i></span>
+								<span class="report"><i class="fa fa-exclamation" aria-hidden="true"></i></span>
+							</div>
+						</div>		
+					</div>
+					<div class="chat-node">
+						<div class="chat-user">
+							<div class="user-head"><img src="../image/yayoi8.jpg" ></div>
+							<div class="user-msg">
+								<p class="user-name">许尹恒</p>
+								<p class="send-time">2019-12-18 9:24</p>
+							</div>
+							<div class="chat-content">
+								这是一段对话
+							</div>
+							<div class="chat-info">
+								<span class="rechatnum"><i class="fa fa-commenting-o" aria-hidden="true"></i></span>
+								<span class="report"><i class="fa fa-exclamation" aria-hidden="true"></i></span>
+							</div>
+						</div>		
+					</div>
+					<div class="chat-node">
+						<div class="chat-user">
+							<div class="user-head"><img src="../image/yayoi8.jpg" ></div>
+							<div class="user-msg">
+								<p class="user-name">许尹恒</p>
+								<p class="send-time">2019-12-18 9:24</p>
+							</div>
+							<div class="chat-content">
+								这是一段对话
+							</div>
+							<div class="chat-info">
+								<span class="rechatnum"><i class="fa fa-commenting-o" aria-hidden="true"></i></span>
+								<span class="report"><i class="fa fa-exclamation" aria-hidden="true"></i></span>
+							</div>
+						</div>		
+					</div>
+					<div class="chat-node">
+						<div class="chat-user">
+							<div class="user-head"><img src="../image/yayoi8.jpg" ></div>
+							<div class="user-msg">
+								<p class="user-name">许尹恒</p>
+								<p class="send-time">2019-12-18 9:24</p>
+							</div>
+							<div class="chat-content">
+								这是一段对话
+							</div>
+							<div class="chat-info">
+								<span class="rechatnum"><i class="fa fa-commenting-o" aria-hidden="true"></i></span>
+								<span class="report"><i class="fa fa-exclamation" aria-hidden="true"></i></span>
+							</div>
+						</div>		
+					</div>
+					<div class="chat-node">
+						<div class="chat-user">
+							<div class="user-head"><img src="../image/yayoi8.jpg" ></div>
+							<div class="user-msg">
+								<p class="user-name">许尹恒</p>
+								<p class="send-time">2019-12-18 9:24</p>
+							</div>
+							<div class="chat-content">
+								这是一段对话
+							</div>
+							<div class="chat-info">
+								<span class="rechatnum"><i class="fa fa-commenting-o" aria-hidden="true"></i></span>
+								<span class="report"><i class="fa fa-exclamation" aria-hidden="true"></i></span>
+							</div>
+						</div>		
+					</div>
+				</div>
+				<div class="author-portrait">
+					<p>他的其他作品</p>
+					<ul>
+						<li><img src="../image/17.jpg" ></li>
+						<li><img src="../image/17.jpg" ></li>
+						<li><img src="../image/28.jpg" ></li>
+					</ul>
+					<div class="bt-more"> 查看更多 </div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(window).on('load',function(){
+			$('.content-right>.chat-box').mCustomScrollbar();
+		});
+		
+	</script>
+</html>

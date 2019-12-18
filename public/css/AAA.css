@@ -1,0 +1,163 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style:none;
+}
+
+.wxhead{
+    width: 100%;
+    height: 130px;
+    border: 1px solid black;
+}
+.wxa{
+    width:100%;
+    height: 50px;
+    background:lightgoldenrodyellow;
+}
+
+.wxb{
+    width: 100%;
+    height:600px;
+    position: relative;
+}
+
+#wxb2 li a{
+    color:black;
+    font-size: 20px;
+}
+
+.wxb1 .sdf{
+    height: 300px;
+    background: white;
+}
+
+.wxb1 li a{
+    color: black;
+    font-size: 16px;
+}
+
+
+#wxb3{
+    width: 60%;
+    position: absolute;
+    left:220px;
+    top:0px;
+    /* background: pink;*/
+}
+.wxgwc{
+    width: 100%;
+    height: 100%;
+}
+.wxb5{
+    height: 20px;
+    overflow: hidden;
+    margin-top: -20px;
+}
+
+.wxb5 li{
+    float: left;
+}
+
+#wxbh li a{
+    color: black;
+}
+.wxzf{
+    width: 28%;
+    height: 200px;
+    position: absolute;
+    top:10px;
+    right:-250px;
+    border: 1px solid lightgray;
+    /*background: #00F7DE;*/
+}
+#zfbtn{
+    color: white;
+    background:black;
+    font-size: 30px;
+}
+.tjzd{
+    margin-left: 200px;
+}
+#wxdz{
+    width:100%;
+    height: 100%;
+}
+.xzdz{
+    width: 90px;
+    position: absolute;
+    top:20px;
+    left: 900px;
+}
+#wxzbl{
+    width: 15%;
+}
+.youhuiquan li{
+    width: 40%;
+    height: 87px;
+    background: powderblue;
+    margin-top: 8px;
+    border: 2px darkcyan dashed;
+    float: left;
+    margin-left: 15px;
+    border-radius: 8px;
+}
+
+
+
+.wxhyk{
+    width: 28%;
+    height: 175px;
+    position: absolute;
+    top:10px;
+    right:-250px;
+    /* border: 1px solid wheat;*/
+    background: lightgoldenrodyellow;
+}
+
+#wxdd{
+    margin-top: -10px;
+}
+.dingdan li{
+    float: left;
+    margin-top: 10px;
+}
+
+#xinxi{
+    width: 100%;
+    height: 200px;
+    background: honeydew;
+    border-radius: 13px;
+    margin-top: -30px;
+}
+
+#xinxi p{
+    margin-top: 20px;
+    margin-left: 10px;
+}
+#bianji{
+    font-size: 16px;
+    margin-left: 685px;
+    border-bottom: 1px blue dashed;
+}
+#simi{
+    width: 100%;
+    height: 100px;
+    background:  honeydew;
+    border-radius: 13px;
+    margin-top: -20px;
+}
+
+#wxbt tr td{
+    border: 1px white solid;
+    border-bottom: 2px darkcyan dashed;
+}
+
+#bmm tr td{
+    border: 1px white solid;
+    border-bottom: 2px darkcyan dashed;
+}
+
+#kj tr td{
+    border: 1px white solid;
+    border-bottom: 2px darkcyan dashed;
+}

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <link rel="stylesheet" href="./css/AAA.css">
+
+</head>
+
+<body>
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">欢迎来到绫罗阁</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="">个人中心</a></li>
+            <li class="layui-nav-item"><a href="">回到首页</a></li>
+
+            <li class="layui-nav-item">
+                <a href="javascript:;">其它系统</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">论坛中心</a></dd>
+                    <dd><a href="">品牌介绍</a></dd>
+                    <dd><a href="">同人社区</a></dd>
+
+                </dl>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                    用户1
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">退出登录</a></dd>
+                </dl>
+            </li>
+            <!--<li class="layui-nav-item"><a href="">退了</a></li>-->
+        </ul>
+    </div>
+    <!--中间的身体---->
+    <div class="layui-tab layui-tab-card">
+        <ul class="layui-tab-title">
+            <li class="layui-this">购物车</li>
+            <li>地址管理</li>
+            <li>优惠券信息</li>
+            <li>订单信息</li>
+            <li>个人信息</li>
+        </ul>
+        <div class="layui-tab-content" style="height: 100%;">
+            <!----购物车----->
+            <div class="layui-tab-item layui-show">
+                <table class="layui-table">
+                    <colgroup>
+                        <col width="10">
+                        <col width="200">
+                        <col>
+                    </colgroup>
+                    <thead>
+                    <tr class="tb">
+                        <th style="width: 30px"></th>
+                        <th>图片</th>
+                        <th>商品详情</th>
+                        <th>剩余库存</th>
+                        <th>商品单价</th>
+                        <th>操作数量</th>
+                        <th>总额</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><input type="radio"></td>
+                        <td><img src="images/logo.png" height="50" width="100"></td>
+                        <td>xxxxxxxx</td>
+                        <td>23</td>
+                        <td>199.00$</td>
+                        <td><a href="javascript:;">+</a><span>12</span><a href="javascript:;">-</a></td>
+                        <td>299.00￥</td>
+                        <td><a href="javascript:;">删除</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <table class="layui-table wb" >
+
+                    <thead>
+                    <tr>
+                        <th><input type="radio">全选</th>
+                        <th><a href="javascript:;">删除</a></th>
+                        <th>已选商品</th>
+                        <th>金额合计：（不含运费）</th>
+                        <th style="background: pink">结算</th>
+
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+
+            <!--------地址管理-------->
+            <div class="layui-tab-item">
+                <table class="layui-table">
+                    <colgroup>
+                        <col width="100">
+                        <col width="200">
+                        <col>
+                    </colgroup>
+                    <thead>
+                    <tr class="wxlo">
+                        <th style="width: 30px"></th>
+                        <th>收件人</th>
+                        <th>联系方式</th>
+                        <th>收货地址</th>
+                        <th>删除</th>
+                        <th>编辑</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><input type="radio">设为默认</td>
+                        <td>xxx</td>
+                        <td>123xxxxxxxx33</td>
+                        <td>四川省成都市xxx</td>
+                        <td><a href="javascript:;">删除</a></td>
+                        <td><a href="javascript:;">重新编辑</a></td>
+                    </tr>
+                    </tbody>
+                    <span>!!每个用户最多可以有5个收货地址</span>
+                </table>
+
+                <!--增加地址-->
+                <div class="zjdz">
+                    <button type="button" id="xzdz">+</button>
+                </div>
+            </div>
+
+            <!----优惠券--->
+            <div class="layui-tab-item">
+                <div class="youhui">
+                    <ul>
+                        <li>
+                            <h2>￥50</h2><br>
+                            <span>使用规则：满300-50</span><br>
+                            <span>有效期截止时间：2019.12.30</span><br>
+                            <span>该优惠券由本店发出，本店具有最终解释权</span><br><hr>
+                            <span class="qsy"><a href="javascript:;">点击去使用</a></span>
+                        </li>
+                        <li>
+                            <h2>￥80</h2><br>
+                            <span>使用规则：满500-80</span><br>
+                            <span>有效期截止时间：2019.12.30</span><br>
+                            <span>该优惠券由本店发出，本店具有最终解释权</span><br><hr>
+                            <span class="qsy"><a href="javascript:;">点击去使用</a></span>
+                        </li>
+                        <li>
+                        <h2>￥80</h2><br>
+                        <span>使用规则：满500-80</span><br>
+                        <span>有效期截止时间：2019.12.30</span><br>
+                        <span>该优惠券由本店发出，本店具有最终解释权</span><br><hr>
+                        <span class="qsy"><a href="javascript:;">点击去使用</a></span>
+                    </li>
+                        <li>
+                            <h2>￥80</h2><br>
+                            <span>使用规则：满500-80</span><br>
+                            <span>有效期截止时间：2019.12.30</span><br>
+                            <span>该优惠券由本店发出，本店具有最终解释权</span><br><hr>
+                            <span class="qsy"><a href="javascript:;">点击去使用</a></span>
+                        </li>
+                        <li>
+                            <h2>￥80</h2><br>
+                            <span>使用规则：满500-80</span><br>
+                            <span>有效期截止时间：2019.12.30</span><br>
+                            <span>该优惠券由本店发出，本店具有最终解释权</span><br><hr>
+                            <span class="qsy"><a href="javascript:;">点击去使用</a></span>
+                        </li>
+                        <li>
+                            <h2>￥80</h2><br>
+                            <span>使用规则：满500-80</span><br>
+                            <span>有效期截止时间：2019.12.30</span><br>
+                            <span>该优惠券由本店发出，本店具有最终解释权</span><br><hr>
+                            <span class="qsy"><a href="javascript:;">点击去使用</a></span>
+                        </li>
+
+                    </ul>
+                </div>
+                <!--优惠券里面查看积分的部分-->
+                <div>
+                    <ul class="yhqdh">
+                        <li>
+                            <h2>用户：xxxx</h2><br>
+                            <span>当前会员等级：xx</span><br>
+                            <span>当前剩余积分：xxx</span><br>
+                            <span><a href="javascript:;">前往会员中心兑换福利>></a></span><br><br>
+                            <span><a href="javascript:;">前往论坛发帖赢取积分>></a></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+<!-------------------订单信息 --------------------->
+            <div class="layui-tab-item">
+                <div class="layui-tab layui-tab-card">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this">所有订单</li>
+                        <li>完成订单</li>
+                        <li>代发货</li>
+                        <li>售后订单</li>
+
+                    </ul>
+                    <div class="layui-tab-content" style="height: 100%;">
+                        <!--订单里面的1部分-->
+                        <div class="layui-tab-item layui-show">
+                            <table class="layui-table">
+                                <colgroup>
+                                   <!-- <col width="10">
+                                    <col width="200">
+                                    <col>-->
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th style="width: 30px">订单号</th>
+                                    <th>图片</th>
+                                    <th>商品名称</th>
+                                    <th>订单金额</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1233444</td>
+                                    <td><img src="images/logo.png" height="50" width="100"></td>
+                                    <td>xxxxxxxx</td>
+                                    <td>230</td>
+                                    <td><a href="javascript:;">申请售后</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="layui-tab-item">2</div>
+                        <div class="layui-tab-item">3</div>
+                        <div class="layui-tab-item">4</div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!------------个人信息-------------->
+            <div class="layui-tab-item" style="height: 600px">
+                <div class="layui-tab layui-tab-card">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this">修改信息</li>
+                        <li>修改密码</li>
+
+                    </ul>
+                    <div class="layui-tab-content" style="height: 100%;">
+                        <!--改信息-->
+                        <div class="layui-tab-item layui-show">
+                            layui.code
+                            <form class="layui-form" action="">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">修改昵称</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" required  lay-verify="required" placeholder="请输新的昵称" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">修改头像</label>
+                                    <div class="layui-input-inline">
+                                        <input type="password" name="password" required lay-verify="required" placeholder="选择新的头像" autocomplete="off" class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">辅助文字</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!--改密码-->
+                        <div class="layui-tab-item">2</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+<script src="./layui/layui.js"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function(){
+        var element = layui.element;
+
+    });
+</script>
+<script src="ajax.js"></script>
+<script>
+    /*  var btn=document.getElementById('btn1');
+      btn.onclick=function () {
+          /!*ajax({
+              url:'./login',
+              });*!/
+          location.href='index.html';
+          /!*alert(1)*!/
+      }*/
+
+
+</script>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>http://www.gxaedu.com</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #left,#right{
+            width: 430px;
+            height: 430px;
+            position: absolute;
+        }
+        #left{
+            left: 20px;
+            top: 20px;
+        }
+        #right{
+            left: 440px;
+            top: 20px;
+            overflow: hidden;
+            display: none;
+        }
+        #left span{
+            width: 200px;
+            height: 200px;
+            background: rgba(255,0,255,0.3);
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+        #right img{
+            position: absolute;
+            left: 0;
+            top:0
+        }
+    </style>
+</head>
+<body>
+    <div id="left">
+        <img src="image/O1CN01BwIcoL2KTcAXkcnLW_!!749499558.jpg_430x430q90.jpg" /><span></span>
+    </div>
+
+    <div id="right">
+        <img src="image/O1CN01BwIcoL2KTcAXkcnLW_!!749499558.jpg" />
+    </div>
+</body>
+<script>
+    var oLeft=document.getElementById('left');
+    var oSpan=document.querySelector('#left span');
+    var oRight=document.getElementById('right');
+    var oImg=document.querySelector('#right img');
+
+    //移入左边
+    oLeft.onmouseover=function () {
+        oSpan.style.display='block';
+        oRight.style.display='block';
+    };
+    //移除消失
+    oLeft.onmouseout=function () {
+        oSpan.style.display='none';
+        oRight.style.display='none';
+    };
+    //在左边移动
+    oLeft.onmousemove=function () {
+
+        var l=event.clientX-oSpan.offsetWidth/2-oLeft.offsetLeft;
+        var t=event.clientY-oSpan.offsetHeight/2-oLeft.offsetTop;
+
+        if(l<=0){
+            l=0
+        }else if(l>=oLeft.offsetWidth-oSpan.offsetWidth){
+            l=oLeft.offsetWidth-oSpan.offsetWidth
+        }
+        if(t<=0){
+            t=0
+        }else if(t>=oLeft.offsetHeight-oSpan.offsetHeight){
+            t=oLeft.offsetHeight-oSpan.offsetHeight
+        }
+
+        oSpan.style.left=l+'px';
+        oSpan.style.top=t+'px';
+
+        oImg.style.left=-l*(oImg.offsetWidth-oRight.offsetWidth)/(oLeft.offsetWidth-oSpan.offsetWidth)+'px'
+        oImg.style.top=-t*(oImg.offsetHeight-oRight.offsetHeight)/(oLeft.offsetHeight-oSpan.offsetHeight)+'px'
+
+    }
+
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
