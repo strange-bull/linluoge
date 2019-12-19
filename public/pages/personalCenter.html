@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../uitl/fonts-awesome-4.7.0/css/font-awesome.css"/>
+		<script type="text/javascript" src="../uitl/jquery-3.4.1.min.js"></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			html,body{
+				width: 100%;
+				height: 100%;
+				background-color: #f4f5f7;
+			}
+			
+			.head{
+				width: 100%;
+				margin-bottom: 5px;
+			}
+			
+			.head-box{
+				width: 1200px;
+				height: 40px;
+				margin: 0 auto;
+				border: 0.1px solid rgba(10,10,10,0.1);
+				background-color: white;
+			}
+			
+			#logo{
+				line-height: 40px;
+				margin-left: 20px;
+				font-size: 12px;
+				cursor: pointer;
+			}
+			
+			.user{
+				position: relative;
+				width: 1200px;
+				height: 125px;
+				margin: 60px auto 0;
+				background-color: white;
+				border: 1px solid #eee;
+				border-radius: 3px;
+			}
+			
+			.user>.user-msg{
+				position: absolute;
+				top: -40px;
+				left: 20px;
+				overflow: hidden;
+			}
+			
+			.user>.user-msg>.user-head{
+				width: 80px;
+				height: 80px;
+				border: 6px solid #f4f5f7;
+				border-radius: 50px;
+				overflow: hidden;
+				float: left;
+			}
+			
+			.user>.user-msg>.user-head>img{
+				width: 100%;
+				height: 100%;
+			}
+			
+			.user>.user-msg>.user-name{
+				float: left;
+				width: 150px;
+				font-size: 15px;
+				letter-spacing: 2px;
+				margin-top: 19px;
+			}
+			
+			.user>.fans{
+				margin-top: 10px;
+				overflow: hidden;
+			}
+			
+			.user>.fans>ul>li{
+				float: right;
+				text-align: center;
+				margin: 0 15px;
+				font-size: 12px;
+				letter-spacing: 1px;
+				cursor: pointer;
+			}
+			
+			.user>.fans>ul>li:hover{
+				color: #DB7093;
+			}
+			
+			.user>.nav{
+				margin-top: 45px;
+				box-sizing: border-box;
+				padding: 0 30px;
+			}
+			
+			.user>.nav>ul{
+				height: 35px;
+			}
+			
+			.user>.nav>ul>li{
+				float: left;
+				height: 100%;
+				margin-right: 50px;
+				cursor: pointer;
+				letter-spacing: 1px;
+			}
+			
+			.user>.nav>ul>li:hover{
+				border-bottom: 3px solid antiquewhite;
+			}
+			
+			.user>.nav>ul>.works>span{
+				margin-right: 5px;
+				color: cadetblue;
+			}
+			
+			.user>.nav>ul>.love>span{
+				margin-right: 5px;
+				color: indianred;
+			}
+			
+			.user>.nav>ul>.chioce{
+				border-bottom: 3px solid antiquewhite;
+			}
+			
+			.data-show{
+				width: 1200px;
+				margin: 10px auto 0;
+			}
+			
+			/* 左侧渲染 */
+			.data-show>.left{
+				width: 15%;
+				/* height: 640px; */
+				background-color: #FFFFFF;
+				border: 1px solid #EEEEEE;
+				border-radius: 3px;
+				float: left;
+				box-sizing: border-box;
+				padding: 10px;
+				letter-spacing: 2px;
+				min-height: 550px;
+			}
+			
+			/* 我的作品 */
+			.data-show>.left>.my-works-nav>li{
+				height: 30px;
+				line-height: 30px;
+				border-radius: 3px;
+				cursor: pointer;
+			}
+			
+			.data-show>.left>.my-works-nav>.add-group{
+				text-align: left;
+				margin: 10px 0 20px 15px;
+			}
+			
+			.data-show>.left>.my-works-nav>.add-group>span{
+				margin-right: 5px;
+			}
+			
+			.data-show>.left>.my-works-nav>.group{
+				text-align-last: justify;
+				box-sizing: border-box;
+				padding: 0 50px;
+				margin-bottom: 20px;
+			}
+			
+			.data-show>.left>.my-works-nav>.group:hover{
+				background-color: rgba(200,200,200,0.1);
+			}
+			/* 左侧结束 */
+			
+			/* 右侧渲染 */
+			.data-show>.right{
+				width: 84%;
+				height: 550px;
+				background-color: #FFFFFF;
+				border: 1px solid #EEEEEE;
+				border-radius: 3px;
+				float: right;
+				box-sizing: border-box;
+				padding: 23px;
+			}
+			
+			.data-show>.right>.nav>ul{
+				overflow: hidden;
+				height: 20px;
+			}
+			
+			.data-show>.right>.nav>ul>li{
+				float: left;
+				margin-right: 20px;
+				letter-spacing: 2px;
+				cursor: pointer;
+			}
+			
+			.data-show>.right>.nav>ul>li>span{
+				margin-left: 5px;
+				font-size: 10px;
+			}
+			
+			/* 我的作品 */
+			.data-show>.right>.content>.my-works-content{
+				width: 100%;
+				height: 300px;
+				margin-top: 32px;
+			}
+					
+			.my-works-content>.my-works-node{
+				float: left;
+				width: 19%;
+				height: 250px;
+				background-color: #FFFFFF;
+				margin-right: 12px;
+				box-sizing: border-box;
+				border: 1px solid #EEEEEE;
+				border-radius: 3px;
+				overflow: hidden;
+				/* background-color: ivory; */
+				color: #797878;
+			}
+			
+			.my-works-content>.my-works-add{
+				text-align: center;
+				line-height: 250px;
+				border-style: dashed;
+				border-color: #777777;
+			}
+				
+			.my-works-content>.my-works-node:nth-of-type(5n){
+				margin-right: 0;
+			}
+			
+			.my-works-content>.my-works-node>.img{
+				width: 100%;
+				height: 200px;
+				overflow: hidden;
+			}
+			
+			.my-works-content>.my-works-node>.img>img{
+				max-width: 100%;
+				min-height: 100%;
+			}
+			
+			.my-works-content>.my-works-node>.time{
+				margin: 5px 8px;
+				font-size: 11px;
+			}
+			
+			.my-works-content>.my-works-node>.title{
+				margin: 0 0 0 8px;
+				font-size: 12px;
+			}
+			/* 右侧结束 */
+		</style>
+	</head>
+	<body>
+		<div class="head">
+			<div class="head-box">
+				<div id='logo'>返回首页</div>
+			</div>
+		</div>
+		<div class="user">
+			<div class="user-msg">
+				<div class="user-head"><img src="../image/head1.jpg" ></div>
+				<div class="user-name">
+					<p>小泽玛利亚</p>
+				</div>
+			</div>
+			<div class="fans">
+				<ul>
+					<li>
+						<p>125</p>
+						<p>粉丝数</p>
+					</li>
+					<li>
+						<p>10</p>
+						<p>关注数</p>
+					</li>
+				</ul>
+			</div>
+			<div class="nav">
+				<ul>
+					<li class="works chioce"><span><i class="fa fa-briefcase" aria-hidden="true"></i> </span>我的作品</li>
+					<li class="love"><span><i class="fa fa-heart" aria-hidden="true"></i> </span>我的收藏</li>
+				</ul>
+			</div>
+		</div>
+		<div class="data-show">
+			<div class="left">
+				<ul class="my-works-nav chioce">
+					<li class="add-group"><span><i class="fa fa-plus" aria-hidden="true"></i></span>添加分组</li>
+					<li class="group">默认</li>
+					<li class="group">女装</li>
+					<li class="group">男装</li>
+					<li class="group">合拍</li>
+				</ul>
+			</div>
+			<div class="right">
+				<div class="nav">
+					<ul>
+						<li>按时间<span><i class="fa fa-chevron-down" aria-hidden="true"></i></span></li>
+						<li>按收藏<span><i class="fa fa-chevron-down" aria-hidden="true"></i></span></li>
+						<li>按点赞<span><i class="fa fa-chevron-down" aria-hidden="true"></i></span></li>
+					</ul>
+				</div>
+				<div class="content">
+					<div class="my-works-content">
+						<div class="my-works-node my-works-add">
+							<div>发布作品</div>
+						</div>
+						<div class="my-works-node">
+							<div class="img"><img src="../image/midoli2.png" ></div>
+							<div class="time">2018-12-8</div>
+							<div class="title">夏日河畔主题精选集</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
