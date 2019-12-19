@@ -1,4 +1,5 @@
 $(function () {
+    var presrc;
     var paixui=0;
     var paixui2=0
     $('#to-four').click(function () {
@@ -72,7 +73,7 @@ $(function () {
 
 
     $('.cate-left ul li').mouseover(function () {
-        $(this).css('transform','rotate(30deg)');
+        $(this).css('transform','translateX(20px)');
     })
 
     $('.cate-left ul li').mouseout(function () {
@@ -80,7 +81,20 @@ $(function () {
     })
 
     $('.cate-left ul li').click(function () {
-        $('.cate-left ul li').css('transform','rotate(0deg)');
-        $(this).css('transform','rotate(30deg)');
+        $('.cate-left ul li').css('color','black');
+        $('.cate-left ul li').css('font-weight','normal');
+        $(this).css('color','#fac371');
+        $(this).css('font-weight','bold');
+        $(this).css('transform','translateX(20px)');
     })
+
+    $('.goods-list ul li img').mouseover(function () {
+        presrc=$(this).attr('src');
+        $(this).attr('src',"//img.alicdn.com/bao/uploaded/i2/124896744/O1CN01YE8dAB1zgndp3W6We_!!0-item_pic.jpg_240x240.jpg")
+
+        $('.goods-list ul li img').mouseout(function () {
+            $(this).attr('src',presrc)
+        })
+    })
+
 })
